@@ -58,11 +58,9 @@ The **Hostel Management App** is a full-stack web application built using the **
 ## 📷 Screenshots
 (Add screenshots of the app here, if available)
 
-## 🤝 Contributing
-If you’d like to contribute, feel free to create a pull request or open an issue!
+## 🌐 visite Site
+https://happyliving.vercel.app/
 
-## 📜 License
-This project is licensed under the MIT License.
 
 ## 📞 Contact
-For any queries, reach out to **your_email@example.com**.
+For any queries, reach out to **skchandrawansi03@gmail.com**.
