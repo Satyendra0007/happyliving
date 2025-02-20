@@ -20,10 +20,10 @@ The **Hostel Management App** is a full-stack web application built using the **
 - **Frontend:** React.js
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
-- **State Management:** Context API / Redux (if used)
+- **State Management:** Context API 
 - **Authentication:** JWT (JSON Web Token)
-- **Styling:** Tailwind CSS / Bootstrap (if used)
-- **Deployment:** (e.g., Vercel, Heroku, or any hosting service)
+- **Styling:** Tailwind CSS 
+- **Deployment:**  Vercel
 
 ## ⚙️ Installation and Setup
 
