@@ -60,8 +60,6 @@ The **Hostel Management App** is a full-stack web application built using the **
      CLOUDINARY_API_SECRET=your_cloudinary_api_secret
      ```
 
-## 📷 Screenshots
-(Add screenshots of the app here, if available)
 
 ## 🌐 Visit Site
 https://happyliving.vercel.app/
