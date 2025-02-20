@@ -11,7 +11,7 @@ export default function UserCard({ _id, image, name, email, phone, handleDelete 
           alt="User"
           className="w-24 h-24 mx-auto rounded-full border-4 border-blue-500"
         />
-        <h3 className="text-lg font-semibold text-gray-800 mt-3">{name}</h3>
+        <h3 className="text-lg font-semibold text-gray-800 mt-3 capitalize">{name}</h3>
 
         <div className="mt-3 text-gray-600 text-sm">
           <div className="flex items-center justify-center gap-2">

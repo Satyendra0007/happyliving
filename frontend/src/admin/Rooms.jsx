@@ -187,7 +187,7 @@ export default function Rooms() {
       </div>
       <div className="bottom">
         <h1 className='text-2xl font-bold my-5  text-center text-blue-700'>All Rooms</h1>
-        <div className="flex flex-wrap gap-4 justify-center items-center min-h-96">
+        <div className="flex flex-wrap gap-4 justify-center items-center min-h-96 py-10">
           {loading ? <Spinner /> : <>
             {rooms.map((room) => {
               return <RoomCard key={room._id} {...room} handleDelete={handleDelete} handleEdit={handleEdit} uploading={loading} />

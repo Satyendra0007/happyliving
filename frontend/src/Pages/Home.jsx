@@ -42,7 +42,7 @@ export default function Home() {
   return (
 
     <>
-      <div className='py-5  w-full  md:h-[84v]  relative'  >
+      <div className='py-5  w-full  md:h-[84v]  relative mt-3'  >
         <div className="image absolute h-full w-full top-0 left-0 -z-10  bottom-0 ">
           <img className='h-full w-full' src={homeImage} alt="" />
         </div>
@@ -132,7 +132,7 @@ export default function Home() {
       </div>
 
       <div className="features md:py-10 ">
-        <h1 className='text-3xl text-center px-4'>Security and comfort you deserve</h1>
+        <h1 className='text-xl md:text-3xl text-center p-4 '>Security and comfort you deserve</h1>
         <div className="cantainer flex flex-wrap gap-9 justify-center items-center mt-4">
           <div className="circle flex flex-col justify-center items-center gap-1">
             <div className="icon text-4xl text-white  w-16 h-16  bg-gradient-to-r from-rose-600 to-pink-600 flex justify-center items-center  rounded-full shadow-full "><TbAirConditioning /></div>
@@ -164,7 +164,7 @@ export default function Home() {
 
       <div className="room py-10 container md:max-w-5xl mx-auto md:flex justify-between items-center">
         <div className="md:w-[40%]">
-          <h1 className='text-4xl px-3 font-semibold'>Incredible Room Facilities </h1>
+          <h1 className='text-2xl md:text-4xl px-3 font-semibold'>Incredible Room Facilities </h1>
           <p className='text-gray-800 font-semibold tracking-wider p-4 text-justify'>Nalanda Living Hostels are committed to providing the best possible experience for our guests. We have a trained staff who are always ready to serve you and make sure your stay is comfortable..</p>
         </div>
         <div className="image md:w-[45%]">
@@ -173,7 +173,7 @@ export default function Home() {
       </div>
 
       <div className="gallery container mx-auto md:py-10 ">
-        <h1 className='text-center font-semibold text-4xl  my-4 '>Gallery</h1>
+        <h1 className='text-center font-semibold text-2xl md:text-4xl  my-4 '>Gallery</h1>
         <div className="md:flex flex-wrap gap-9 justify-center items-center space-y-4">
           <img className='md:w-[28rem] shadow-full' src="https://www.nalandaliving.com/assets/img/infrastructure/2.jpg" alt="" />
           <img className='md:w-[28rem] shadow-full' src="https://www.nalandaliving.com/assets/img/infrastructure/3.jpg" alt="" />

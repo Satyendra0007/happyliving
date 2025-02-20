@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { FaUser } from "react-icons/fa";
 import { SiGooglemessages } from "react-icons/si";
 import { MdOutlineMiscellaneousServices } from "react-icons/md";
+import { MdMeetingRoom } from "react-icons/md";
 
 export default function AdminMenu() {
   return (
@@ -29,7 +30,7 @@ export default function AdminMenu() {
           to="room"
           style={({ isActive }) => isActive ? { backgroundColor: "blue", color: "white" } : {}}
         >
-          <MdOutlineMiscellaneousServices />
+          <MdMeetingRoom />
           <span className='hidden md:block'>Rooms</span>
         </NavLink>
 

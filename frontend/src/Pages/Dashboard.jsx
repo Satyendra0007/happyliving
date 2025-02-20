@@ -54,9 +54,9 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="rooms">
-        <h1 className='text-3xl font-semibold text-center'>Avalible Rooms And Prices</h1>
+        <h1 className='text-xl  md:text-3xl font-semibold text-center'>Avalible Rooms And Prices</h1>
       </div>
-      <div className="conatainer md:max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-5 md:py-10">
+      <div className="conatainer md:max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-5 py-5 md:py-10">
         {loading ? <Spinner /> : <>
           {rooms.map((room) => {
             return <UserRomCard key={room._id} {...room} />

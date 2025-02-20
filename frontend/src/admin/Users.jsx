@@ -48,8 +48,8 @@ export default function Users() {
 
   return (
     <div className='relative'>
-      <h1 className='text-2xl font-bold my-5  text-center text-blue-700'>All Users</h1>
-      <div className="flex flex-wrap gap-4 justify-center items-center min-h-96 ">
+      <h1 className='text-2xl font-bold my-5 text-center text-blue-700'>All Users</h1>
+      <div className="flex flex-wrap gap-4 justify-center items-center py-5 min-h-96 ">
         {loading ? <Spinner /> : <>
           {users.map((user) => {
             return <UserCard key={user._id} {...user} handleDelete={handleDelete} />
