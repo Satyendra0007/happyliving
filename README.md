@@ -15,6 +15,7 @@ The **Hostel Management App** is a full-stack web application built using the **
 - View and respond to user messages.
 - Add, update, and delete hostel room types.
 - Set and update room prices.
+- Upload and manage images using **Cloudinary**.
 
 ## 🛠️ Tech Stack
 - **Frontend:** React.js
@@ -23,28 +24,30 @@ The **Hostel Management App** is a full-stack web application built using the **
 - **State Management:** Context API 
 - **Authentication:** JWT (JSON Web Token)
 - **Styling:** Tailwind CSS 
-- **Deployment:**  Vercel
+- **UI Components:** Flowbite
+- **Image Storage:** Cloudinary
+- **Deployment:** Vercel
 
 ## ⚙️ Installation and Setup
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/hostel-management-app.git
-   cd hostel-management-app
+   git clone https://github.com/Satyendra0007/happyliving.git
+   cd happyliving
    ```
 
 2. **Backend Setup:**
    ```sh
    cd backend
    npm install
-   npm start
+   npm run dev
    ```
 
 3. **Frontend Setup:**
    ```sh
    cd frontend
    npm install
-   npm start
+   npm run dev
    ```
 
 4. **Environment Variables:**
@@ -52,15 +55,16 @@ The **Hostel Management App** is a full-stack web application built using the **
      ```env
      MONGO_URI=your_mongodb_connection_string
      JWT_SECRET=your_secret_key
-     PORT=5000
+     CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+     CLOUDINARY_API_KEY=your_cloudinary_api_key
+     CLOUDINARY_API_SECRET=your_cloudinary_api_secret
      ```
 
 ## 📷 Screenshots
 (Add screenshots of the app here, if available)
 
-## 🌐 visite Site
+## 🌐 Visit Site
 https://happyliving.vercel.app/
-
 
 ## 📞 Contact
 For any queries, reach out to **skchandrawansi03@gmail.com**.
