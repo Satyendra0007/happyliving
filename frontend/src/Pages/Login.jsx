@@ -15,8 +15,7 @@ import { sendPostRequest } from '../actions/serverActions';
 export default function Login() {
   const navigate = useNavigate()
   const { isLoggedIn, saveToLocalStorage } = useContext(ContextStore)
-  const { register, handleSubmit, watch, formState: { errors, isSubmiting } } = useForm()
-  const [loading, setLoading] = useState(false)
+  const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm()
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -25,7 +24,6 @@ export default function Login() {
   }, [])
 
   const handleOnSubmit = async (data) => {
-    setLoading(true)
     const serverResponse = await sendPostRequest(`${import.meta.env.VITE_APP_SERVER_URI}api/auth/login`, data)
     const response = await serverResponse.json()
     if (serverResponse.ok) {
@@ -36,13 +34,12 @@ export default function Login() {
     else {
       toast.error(response.message)
     }
-    setLoading(false)
   }
 
   return (
     <section>
       <div className="container mx-auto p-2 h-[84vh] flex justify-center items-center relative w-full">
-        {loading && <Spinner />}
+        {isSubmitting && <Spinner />}
         <div className="box bg-gradient-to-r from-blue-500 to-green-500 min-h-[31rem] w-[19rem] rotate-6 absolute md:w-[36vw] rounded-xl "></div>
         <div className="form"  >
           <form onSubmit={handleSubmit(handleOnSubmit)} className='bg-white/30 w-[20rem] px-3 py-10 backdrop-blur-xl space-y-8 rounded-xl md:w-[35vw]'>
@@ -72,7 +69,7 @@ export default function Login() {
             </div>
 
             <div className="button flex justify-center items-center flex-col gap-2 ">
-              <button disabled={isSubmiting} type="submit" className='outline-none w-44 py-2 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-2xl hover:bg-blue-700 '>Login</button>
+              <button disabled={isSubmitting} type="submit" className='outline-none w-44 py-2 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-2xl hover:bg-blue-700 '>Login</button>
               <div className="info text-xs text-center "> Don't Have Account ? <Link to="/register" className="text-blue-700 font-bold hover:underline">
                 Register</Link></div>
             </div>

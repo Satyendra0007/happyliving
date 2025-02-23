@@ -13,15 +13,13 @@ import { useNavigate } from "react-router-dom"
 import Spinner from '../Components/Spinner';
 import { FaUpload } from "react-icons/fa6";
 import user from '../images/user.webp'
-import { PiStudentFill } from "react-icons/pi";
 import { ContextStore } from '../store/ContextStore'
 
 
 export default function Register() {
   const navigate = useNavigate()
   const { isLoggedIn, saveToLocalStorage } = useContext(ContextStore)
-  const { register, handleSubmit, watch, formState: { errors, isSubmiting } } = useForm()
-  const [loading, setLoading] = useState(false)
+  const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm()
   const [preview, setPreview] = useState(user)
   const [show, setShow] = useState({
     pass: false,
@@ -36,15 +34,12 @@ export default function Register() {
 
 
   const handleOnSubmit = async (data) => {
-    console.log(data)
     if (data.password === data.confirmPassword) {
-      setLoading(true)
       const formData = new FormData();
       formData.append("image", data.image[0])
       formData.append("name", data.name);
       formData.append("email", data.email);
       formData.append("phone", data.phone);
-      formData.append("gender", data.course);
       formData.append("password", data.password);
       const serverResponse = await fetch(`${import.meta.env.VITE_APP_SERVER_URI}api/auth/signup`, {
         method: "POST",
@@ -59,7 +54,6 @@ export default function Register() {
       else {
         toast.warning(response.message)
       }
-      setLoading(false)
     }
 
   }
@@ -73,7 +67,7 @@ export default function Register() {
     <>
       <section>
         <div className="container mx-auto p-2 h-[91vh] flex justify-center items-center relative w-full">
-          {loading && <Spinner />}
+          {isSubmitting && <Spinner />}
           <div className="box bg-gradient-to-r from-blue-500 to-green-500 min-h-[38rem] w-[19rem] rotate-6 absolute md:w-[36vw] rounded-xl "></div>
           <div className="form"  >
             <form onSubmit={handleSubmit(handleOnSubmit)} className='bg-white/30 w-[20rem] px-3 py-10 backdrop-blur-xl space-y-4 rounded-xl md:w-[35vw]'>
@@ -144,7 +138,7 @@ export default function Register() {
                 </div>
               </div>
               <div className="button flex justify-center items-center flex-col gap-2 ">
-                <button disabled={isSubmiting} type="submit" className='outline-none w-44 py-2 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-lg hover:bg-blue-700 '>Register</button>
+                <button disabled={isSubmitting} type="submit" className='outline-none w-44 py-2 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-lg hover:bg-blue-700 '>Register</button>
                 <div className="info text-xs text-center "> Already have Account ? <Link to="/login" className="text-blue-700 font-bold hover:underline">
                   Login</Link></div>
               </div>

@@ -17,19 +17,16 @@ import { MdOutlineLocalLaundryService } from "react-icons/md";
 import homeImage from "../images/home.jpg"
 
 export default function Home() {
-  const { register, handleSubmit, reset, formState: { errors, isSubmiting } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm()
   const { isLoggedIn } = useContext(ContextStore)
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
 
   const handleOnSubmit = async (data) => {
-    setLoading(true)
     const serverResponse = await sendPostRequest(`${import.meta.env.VITE_APP_SERVER_URI}api/form/contact`, data)
     const response = await serverResponse.json()
     if (serverResponse.ok) {
       toast.success(response.message)
       reset();
-      setLoading(false)
     }
     else {
       toast.error(response.message)
@@ -122,9 +119,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div disabled={loading} className="button flex justify-center items-center flex-col gap-2 ">
-                    <button disabled={isSubmiting} type="submit" className='outline-none w-44 py-3 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-lg hover:bg-blue-700 '>
-                      {loading ? "Sending..." : "Send Message"}</button>
+                  <div className="button flex justify-center items-center flex-col gap-2 ">
+                    <button disabled={isSubmitting} type="submit" className='outline-none w-44 py-3 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-lg hover:bg-blue-700 '>
+                      {isSubmitting ? "Sending..." : "Send Message"}</button>
                   </div>
                 </form>
               </div>
