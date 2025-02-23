@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FaStaffSnake } from "react-icons/fa6";
 import { ContextStore } from '../store/ContextStore';
@@ -20,14 +20,16 @@ export default function Home() {
   const { register, handleSubmit, reset, formState: { errors, isSubmiting } } = useForm()
   const { isLoggedIn } = useContext(ContextStore)
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const handleOnSubmit = async (data) => {
-    console.log(data)
+    setLoading(true)
     const serverResponse = await sendPostRequest(`${import.meta.env.VITE_APP_SERVER_URI}api/form/contact`, data)
     const response = await serverResponse.json()
     if (serverResponse.ok) {
       toast.success(response.message)
       reset();
+      setLoading(false)
     }
     else {
       toast.error(response.message)
@@ -120,8 +122,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="button flex justify-center items-center flex-col gap-2 ">
-                    <button disabled={isSubmiting} type="submit" className='outline-none w-44 py-3 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-lg hover:bg-blue-700 '>Send Message</button>
+                  <div disabled={loading} className="button flex justify-center items-center flex-col gap-2 ">
+                    <button disabled={isSubmiting} type="submit" className='outline-none w-44 py-3 bg-blue-600 text-white font-semibold rounded-md cursor-pointer shadow-lg hover:bg-blue-700 '>
+                      {loading ? "Sending..." : "Send Message"}</button>
                   </div>
                 </form>
               </div>

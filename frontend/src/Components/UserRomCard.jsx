@@ -6,7 +6,7 @@ const UserRoomCard = ({ thumbnail, price, bedType, seatAvailable }) => {
       <img src={thumbnail} alt="Room" className="w-full h-48 object-cover" />
 
       <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-800">{bedType} Room</h3>
+        <h3 className="text-lg font-semibold text-gray-800">{bedType} Bed</h3>
 
         <div className=" mt-2">
           <div className="flex items-center gap-2 text-gray-600">
