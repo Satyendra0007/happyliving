@@ -9,6 +9,6 @@ router.route("/users").get(userMiddleware, adminMiddleware, adminController.fetc
 router.route("/users/:id").delete(userMiddleware, adminMiddleware, adminController.deleteUser)
 router.route("/messages").get(userMiddleware, adminMiddleware, adminController.fetchAllContactData)
 router.route("/messages/:id").delete(userMiddleware, adminMiddleware, adminController.deleteMessage)
-
+router.route("/reciepts").get(userMiddleware, adminMiddleware, adminController.getReciepts)
 
 module.exports = router

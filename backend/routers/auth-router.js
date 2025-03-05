@@ -16,12 +16,12 @@ router.route("/login").post(
 
 router.route("/signup").post(upload.single('image'),
   body("name").notEmpty().isString(),
-  body("gender").notEmpty().isString(),
   body("email").notEmpty().isString().isEmail(),
   body("phone").notEmpty().isString().isLength(10),
   body("password").notEmpty().isString().isLength({ min: 8 }),
   authController.signUp)
 
 router.route("/user").get(userMiddleware, authController.getUserData)
+router.route("/receipt").get(userMiddleware, authController.getReciepts)
 
 module.exports = router

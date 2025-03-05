@@ -11,6 +11,7 @@ import Admin from './admin/Admin'
 import Users from './admin/Users'
 import Messages from './admin/Messages'
 import Rooms from './admin/Rooms'
+import Reciepts from './admin/Reciepts'
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='users' element={<Users />} />
           <Route path='messages' element={<Messages />} />
           <Route path='room' element={<Rooms />} />
+          <Route path='reciepts' element={<Reciepts />} />
         </Route>
       </Routes>
       <Footer />

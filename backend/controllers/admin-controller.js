@@ -1,6 +1,7 @@
 const User = require("../models/User-model")
 const Room = require("../models/room-model")
 const Contact = require("../models/contact-model")
+const Payment = require("../models/payment-model")
 
 const fetchAllUserData = async (req, res) => {
   try {
@@ -40,5 +41,14 @@ const deleteMessage = async (req, res) => {
   }
 }
 
+const getReciepts = async (req, res) => {
+  try {
+    const allReciepts = await Payment.find({})
+    return res.status(200).json(allReciepts)
+  } catch (error) {
+    return res.status(500).json({ messsage: "Internal Server Error !" })
+  }
+}
 
-module.exports = { fetchAllContactData, fetchAllUserData, deleteUser, deleteMessage }
+
+module.exports = { fetchAllContactData, fetchAllUserData, deleteUser, deleteMessage, getReciepts }

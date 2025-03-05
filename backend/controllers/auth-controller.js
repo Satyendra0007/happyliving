@@ -2,6 +2,7 @@ const User = require("../models/User-model")
 const cloudinary = require('cloudinary').v2;
 const streamifier = require('streamifier');
 const { validationResult } = require("express-validator")
+const Payment = require("../models/payment-model")
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -10,8 +11,7 @@ cloudinary.config({
 });
 
 
-const signUp = async (req, res) => {
-
+module.exports.signUp = async (req, res) => {
   const result = validationResult(req);
   const file = req.file;
   if (!result.isEmpty() || !file) {
@@ -42,7 +42,7 @@ const signUp = async (req, res) => {
 }
 
 
-const logIn = async (req, res) => {
+module.exports.logIn = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
     return res.status(400).json({ error: result.array() })
@@ -63,7 +63,7 @@ const logIn = async (req, res) => {
 
 }
 
-const getUserData = async (req, res) => {
+module.exports.getUserData = async (req, res) => {
   try {
     const userData = await User.findOne({ email: req.userData.email })
     res.status(200).json(userData)
@@ -72,4 +72,13 @@ const getUserData = async (req, res) => {
   }
 }
 
-module.exports = { logIn, signUp, getUserData }
+module.exports.getReciepts = async (req, res) => {
+  try {
+    const reciept = await Payment.find({ userId: req.userData._id })
+    res.status(200).json(reciept);
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: "Internal Server Error" })
+  }
+}
+

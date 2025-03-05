@@ -48,15 +48,15 @@ export default function RoomCard({ bedType, thumbnail, _id, price, seatAvailable
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-gray-800 capitalize">{bedType} Bed</h3>
 
-                <div className=" mt-2">
-                  <div className="flex items-center gap-2 text-gray-600">
+                <div className=" mt-2 text-sm space-y-1">
+                  <div className="flex items-center gap-2 ">
                     <DollarSign size={18} />
                     <span className="font-medium text-gray-700">₹ {price}/Year</span>
                   </div>
 
-                  <div className="flex items-center gap-2 text-gray-600">
+                  <div className="flex items-center gap-3 ">
                     <Bed size={18} />
-                    <span className="font-medium">{seatAvailable} Seats Left</span>
+                    <span className="font-medium text-green-600">{seatAvailable} Seats Left</span>
                   </div>
                 </div>
               </div>

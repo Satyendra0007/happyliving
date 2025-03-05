@@ -111,7 +111,6 @@ export default function Home() {
                   <div className="meaage">
                     <div className="input">
                       <label className='font-bold text-gray-900 text-sm' htmlFor="message">Message</label>
-                      {/* <input className=' rounded-md border-gray-400 bg-gray-100 w-full border placeholder:text-blue-300' type="text" id='name' placeholder='Enter your Name' {...register("message", { required: { value: true, message: "Message is required " } })} /> */}
                       <textarea name="message" id="message" className=' rounded-md border-gray-400 bg-gray-100 w-full border placeholder:text-blue-300' type="text" placeholder='Enter your Message' {...register("message", { required: { value: true, message: "Message is required " } })}></textarea>
                     </div>
                     <div className="error ml-8">
@@ -165,7 +164,7 @@ export default function Home() {
       <div className="room py-10 container md:max-w-5xl mx-auto md:flex justify-between items-center">
         <div className="md:w-[40%]">
           <h1 className='text-2xl md:text-4xl px-3 font-semibold'>Incredible Room Facilities </h1>
-          <p className='text-gray-800 font-semibold tracking-wider p-4 text-justify'>Nalanda Living Hostels are committed to providing the best possible experience for our guests. We have a trained staff who are always ready to serve you and make sure your stay is comfortable..</p>
+          <p className='text-gray-800 font-semibold tracking-wider p-4 text-justify'>Happy Living Hostels are committed to providing the best possible experience for our guests. We have a trained staff who are always ready to serve you and make sure your stay is comfortable..</p>
         </div>
         <div className="image md:w-[45%]">
           <img className='w-full' src="https://www.nalandaliving.com/assets/img/home/food.png" alt="" />
