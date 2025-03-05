@@ -3,7 +3,11 @@ const Room = require("../models/room-model")
 const crypto = require("crypto")
 const axios = require("axios")
 const Payment = require("../models/payment-model")
+// const puppeteer = require("puppeteer-core");
+// const chromium = require("@sparticuz/chromium");
+
 const puppeteer = require("puppeteer");
+const chromium = require("@sparticuz/chromium");
 
 module.exports.createPayment = async (req, res) => {
   const { roomId } = req.params;
@@ -79,23 +83,15 @@ module.exports.generateReciept = async (req, res) => {
       return res.status(400).json({ success: false, message: "Invalid Payment ID" });
     }
 
-    const { id: payment_id,
-      amount,
-      currency,
-      status,
-      order_id,
-      method,
-      description,
-      vpa,
-      email,
-      contact,
-      fee,
-      tax,
-      created_at,
-      acquirer_data,
-    } = paymentData.data
+    const { id: payment_id, amount, currency, status, order_id, method, description, vpa, email, contact, fee, tax, created_at, acquirer_data, } = paymentData.data
 
-    const browser = await puppeteer.launch();
+    const isLocal = process.env.NODE_ENV === "development"
+    const browser = await puppeteer.launch({
+      args: isLocal ? [] : chromium.args,
+      executablePath: isLocal ? undefined : await chromium.executablePath(),
+      headless: isLocal ? false : chromium.headless,
+      defaultViewport: chromium.defaultViewport,
+    });
     const page = await browser.newPage();
     const paymentDate = new Date(created_at * 1000).toLocaleString();
 
@@ -147,7 +143,7 @@ module.exports.generateReciept = async (req, res) => {
                 <td>${description}</td>
                 <td class="amount">₹${(amount / 100).toLocaleString()} ${currency}</td>
               </tr>
-              
+
               <tr>
                 <td><strong>Total Paid</strong></td>
                 <td class="amount">₹${((amount / 100)).toLocaleString()} ${currency}</td>
@@ -173,7 +169,6 @@ module.exports.generateReciept = async (req, res) => {
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Disposition", `attachment; filename=receipt_${paymentId}.pdf`);
     res.setHeader("Content-Length", pdfBuffer.length);
-    // res.send(pdfBuffer);
     res.end(pdfBuffer);
 
 
@@ -182,7 +177,6 @@ module.exports.generateReciept = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to generate receipt" });
   }
 }
-
 
 const invoiceResponse = async (userData, amount) => {
   const authHeader = {
